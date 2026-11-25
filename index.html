@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishu | Forever Yours - Usman</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#06152f;color:#fff;
+font-family:Poppins,sans-serif;
+overflow-x:hidden;
+}
+:root{--gold:#e9c66b;--blue:#071b3b}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:0}
+section{
+position:relative;z-index:1;
+min-height:100vh;padding:80px 20px;
+display:flex;align-items:center;
+justify-content:center;text-align:center;
+}
+.gold{color:var(--gold)}
+h1,h2{font-family:Cinzel,serif}
+h1{font-size:clamp(35px,8vw,75px);color:var(--gold)}
+h2{font-size:clamp(26px,6vw,42px);color:var(--gold)}
+p{line-height:1.9;color:#e1e8f5}
+.script{font-family:'Great Vibes',cursive;color:var(--gold)}
+.card{
+width:min(650px,100%);
+padding:35px 22px;
+border:1px solid #d7b75e;
+border-radius:22px;
+background:linear-gradient(145deg,#102c55dd,#06152fee);
+box-shadow:0 0 35px #d8ad4b22;
+}
+button{
+background:linear-gradient(120deg,#b58b37,#ffe7a0,#b58b37);
+color:#081a35;border:0;
+padding:14px 28px;border-radius:40px;
+font-weight:700;cursor:pointer;
+margin:12px 5px;
+transition:.3s;
+}
+button:hover{transform:scale(1.07);box-shadow:0 0 25px #e9c66b}
+.hidden{display:none!important}
+.hero-content{max-width:700px}
+.hero-sub{font-family:'Great Vibes';font-size:35px;margin:20px}
+.royal-line{width:100px;height:2px;background:var(--gold);margin:25px auto}
+.big-heart{font-size:65px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.2)}}
+.timer{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:10px;margin:25px 0;
+}
+.time-box{
+padding:18px 5px;border:1px solid #d9b653;
+border-radius:13px;background:#10284c;
+}
+.time-box strong{display:block;font-size:27px;color:var(--gold)}
+.time-box small{font-size:10px;letter-spacing:1px}
+.message{
+font-family:Cinzel,serif;
+font-weight:700;
+font-size:clamp(16px,4vw,25px);
+margin:12px 0;
+color:#ffe5a0;
+animation:appear .5s;
+}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.reasons p{padding:12px;border-bottom:1px solid #ffffff18}
+footer{padding:30px;text-align:center;color:var(--gold);position:relative;z-index:2}
+</style>
+</head>
+
+<body>
+<canvas id="stars"></canvas>
+
+<!-- WELCOME -->
+<section id="welcome">
+<div class="hero-content">
+<div class="big-heart">💙</div>
+<p class="gold">A LITTLE WORLD MADE JUST FOR YOU</p>
+<h1>NISHU</h1>
+<div class="royal-line"></div>
+<p class="hero-sub">My Princess, My Happiness</p>
+<p>Some people become a beautiful part of life. You became my favourite part. ❤️</p>
+<br>
+<button onclick="enterLove()">OPEN YOUR SURPRISE ✨</button>
+</div>
+</section>
+
+<!-- LOVE LETTER -->
+<section id="letter" class="hidden">
+<div class="card">
+<p class="gold">A LETTER FROM MY HEART</p>
+<h2>Dear Nishu 💌</h2>
+<div class="royal-line"></div>
+<p>
+I don't know how to explain how special you are to me.
+But I know one thing, whenever I think about happiness,
+your name comes to my mind first.
+<br><br>
+Tum meri life ka woh beautiful chapter ho
+jise main kabhi end nahi karna chahta.
+<br><br>
+You are not just special, you are my favourite feeling.
+</p>
+<p class="script" style="font-size:42px;margin-top:20px">Forever Yours, Usman ❤️</p>
+<button onclick="showPage('love')">NEXT ❤️</button>
+</div>
+</section>
+
+<!-- LOVE MESSAGE ANIMATION -->
+<section id="love" class="hidden">
+<div class="card">
+<p class="gold">A LITTLE MESSAGE FOR YOU</p>
+<h2>Just For You 🌹</h2>
+<div class="royal-line"></div>
+<div id="messages"></div>
+<button onclick="showPage('timer')">SEE OUR LOVE TIMER ⏳</button>
+</div>
+</section>
+
+<!-- TIMER -->
+<section id="timer" class="hidden">
+<div class="card">
+<p class="gold">EVERY SECOND IS SPECIAL</p>
+<h2>Our Love Countdown</h2>
+<p class="script" style="font-size:35px">Until our 6 Month Milestone</p>
+<div class="timer">
+<div class="time-box"><strong id="days">00</strong><small>DAYS</small></div>
+<div class="time-box"><strong id="hours">00</strong><small>HOURS</small></div>
+<div class="time-box"><strong id="minutes">00</strong><small>MINUTES</small></div>
+<div class="time-box"><strong id="seconds">00</strong><small>SECONDS</small></div>
+</div>
+<p id="timerText">Counting every moment... 💙</p>
+<p>One beautiful journey, countless memories.</p>
+<button onclick="showPage('reasons')">NEXT ✨</button>
+</div>
+</section>
+
+<!-- REASONS -->
+<section id="reasons" class="hidden">
+<div class="card reasons">
+<h2>Why You're Special 💗</h2>
+<div class="royal-line"></div>
+<p>🌹 Your smile makes everything beautiful.</p>
+<p>💙 Your presence makes my day better.</p>
+<p>✨ Your little talks are my favourite.</p>
+<p>🫂 You make ordinary moments special.</p>
+<p>👑 Because you're simply YOU, Nishu.</p>
+<button onclick="showPage('promise')">ONE LAST THING ❤️</button>
+</div>
+</section>
+
+<!-- PROMISE -->
+<section id="promise" class="hidden">
+<div class="card">
+<div class="big-heart">💙</div>
+<h2>My Promise</h2>
+<div class="royal-line"></div>
+<p>
+I promise to respect your feelings,
+listen to your heart and appreciate
+every little moment we share.
+<br><br>
+I don't need a perfect story.
+I just want a beautiful one with you.
+</p>
+<button onclick="showPage('final')">OPEN FINAL SURPRISE 🎁</button>
+</div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="hidden">
+<div class="card">
+<div class="big-heart">💝</div>
+<p class="gold">MY FAVOURITE PERSON</p>
+<h1 style="font-size:42px">NISHU</h1>
+<div class="royal-line"></div>
+<p class="script" style="font-size:39px">I Love You So Much</p>
+<p class="message">MERA BACCHA 💐✨</p>
+<p>Thank you for being a beautiful part of my world.</p>
+<br>
+<p class="gold">FOREVER YOURS</p>
+<h2>USMAN ❤️</h2>
+<button onclick="burst()">SEND YOU A HUG 🫂</button>
+</div>
+</section>
+
+<footer>MADE WITH 💙 BY USMAN | FOR NISHU</footer>
+
+<script>
+// PAGE NAVIGATION
+function enterLove(){showPage('letter')}
+function showPage(id){
+document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// COMPLETE NAME ANIMATION
+const messages=[
+["𝐍","💐"],
+["𝐍𝐈","♥️"],
+["𝐍𝐈𝐒","💓"],
+["𝐍𝐈𝐒𝐇𝐔","👾"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈","💞"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋","✨"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎","❤️‍🩹"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕","🫀"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄","🤍"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘","🖤"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎","🤎"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔","🫂"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒","💌"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎","💝"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎 𝐌","💟"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎 𝐌𝐔","🌸"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎 𝐌𝐔𝐂","🥀"],
+["𝐍𝐈𝐒𝐇𝐔 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎 𝐌𝐔𝐂𝐇","❣️"]
+];
+
+const box=document.getElementById('messages');
+messages.forEach((m,i)=>{
+let div=document.createElement('div');
+div.className='message';
+div.style.animationDelay=(i*.15)+'s';
+div.textContent=m[0]+' '+m[1];
+box.appendChild(div);
+});
+let last=document.createElement('div');
+last.className='message';
+last.style.marginTop='30px';
+last.innerHTML='𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐒𝐎 𝐌𝐔𝐂𝐇<br>𝐌𝐄𝐑𝐀 𝐁𝐀𝐂𝐂𝐇𝐀 💐✨';
+box.appendChild(last);
+
+// SIX MONTH COUNTDOWN
+// Change this date to your actual starting date if needed.
+const target=new Date("2027-05-25T00:00:00").getTime();
+
+function updateTimer(){
+let diff=target-Date.now();
+if(diff<=0){
+document.getElementById('timerText').textContent="Our 6 Month Milestone is here! ❤️";
+diff=0;
+}
+let d=Math.floor(diff/86400000);
+let h=Math.floor(diff%86400000/3600000);
+let m=Math.floor(diff%3600000/60000);
+let s=Math.floor(diff%60000/1000);
+document.getElementById('days').textContent=d;
+document.getElementById('hours').textContent=h;
+document.getElementById('minutes').textContent=m;
+document.getElementById('seconds').textContent=s;
+}
+setInterval(updateTimer,1000);
+updateTimer();
+
+// HEART BURST
+function burst(){
+for(let i=0;i<35;i++){
+let heart=document.createElement('div');
+heart.textContent=['💙','💛','💖','✨','🌹'][Math.floor(Math.random()*5)];
+heart.style.position='fixed';
+heart.style.left=Math.random()*100+'vw';
+heart.style.top='100vh';
+heart.style.fontSize=(18+Math.random()*25)+'px';
+heart.style.zIndex=10;
+heart.style.transition='transform 3s,opacity 3s';
+document.body.appendChild(heart);
+requestAnimationFrame(()=>{
+heart.style.transform=`translateY(-${110+Math.random()*90}vh) rotate(${Math.random()*360}deg)`;
+heart.style.opacity='0';
+});
+setTimeout(()=>heart.remove(),3200);
+}
+}
+
+// STARRY BACKGROUND
+const canvas=document.getElementById('stars');
+const ctx=canvas.getContext('2d');
+let stars=[];
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+stars=Array.from({length:100},()=>({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.7,
+a:Math.random()
+}));
+}
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+stars.forEach(st=>{
+st.a+=.015;
+ctx.fillStyle=`rgba(255,220,130,${.3+.5*Math.abs(Math.sin(st.a))})`;
+ctx.beginPath();
+ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(draw);
+}
+window.addEventListener('resize',resize);
+resize();draw();
+</script>
+</body>
+  </html>
+  
